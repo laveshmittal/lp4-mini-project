@@ -25,8 +25,9 @@ SECRET_KEY = 'e6oz24=z^@gmnu0f+jd35lv6#qb(@$7@+u-er6=rv@bxvc4hq*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['d30dc54b-0ee5-47b0-90ee-4d1f575d5e22.id.repl.co',
-'lp4.laveshmittal.repl.co'
+ALLOWED_HOSTS = [
+#   'd30dc54b-0ee5-47b0-90ee-4d1f575d5e22.id.repl.co',
+# 'lp4.laveshmittal.repl.co'
 ]
 
 

@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from .model import *
 import numpy as np
-import array
-import numpy as np
+
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 # Create your views here.
@@ -64,10 +63,12 @@ def predictcount(request):
 
         serviceInput = request.GET.get("service", "")
         qualityInput = request.GET.get("quality", "")
-        if (serviceInput>10) or (qualityInput>10):
-          raise
+        print(serviceInput)
+        print(qualityInput)
         serviceInput = float(serviceInput)
         qualityInput = float(qualityInput)
+        if((serviceInput>10) or (qualityInput>10)):
+          raise
 
         tipping.input['quality'] = qualityInput
         tipping.input['service'] = serviceInput
@@ -76,8 +77,8 @@ def predictcount(request):
         tipping.compute()
 
         result1 = 'The resulting suggested tip is ' + \
-            str(round(tipping.output['tip']),2) + ' %'
-        passdict = {'result': result1}
+            str(round(tipping.output['tip'],2)) + ' % of your bill value'
+        passdict = {'result': result1,'quality':str(qualityInput),'service':str(serviceInput)}
 
         return render(request, 'predict.html',
                       passdict
